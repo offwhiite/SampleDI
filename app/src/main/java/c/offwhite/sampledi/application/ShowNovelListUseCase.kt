@@ -1,5 +1,6 @@
 package c.offwhite.sampledi.application
 
+import c.offwhite.sampledi.domain.NovelIntroduction
 import c.offwhite.sampledi.domain.WebSite
 import com.white.off.hotblood.repository.NarouRepository
 
@@ -8,7 +9,7 @@ import com.white.off.hotblood.repository.NarouRepository
  */
 class ShowNovelListUseCase {
 
-    fun getNovelList(word : String) {
+    fun getNovelList(word : String):List<NovelIntroduction> {
         val webSite = WebSite("https://api.syosetu.com/", NarouRepository())
         return webSite.search(word)
     }

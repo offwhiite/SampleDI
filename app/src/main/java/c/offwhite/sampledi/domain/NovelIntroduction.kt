@@ -3,8 +3,7 @@ package c.offwhite.sampledi.domain
 /**
  * 小説紹介
  */
-class NovelIntroduction(val allcount: Int,
-                        val title: String,
+class NovelIntroduction(val title: String,
                         val ncode: String,
                         val userid: String,
                         val writer: String,

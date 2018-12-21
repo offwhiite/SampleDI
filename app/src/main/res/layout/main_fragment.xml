@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name=" MainViewModel" type="c.offwhite.sampledi.ui.main.MainViewModel"/>
+        <variable name="MainViewModel" type="c.offwhite.sampledi.ui.main.MainViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -23,6 +23,7 @@
 
                 <TextView
                         tools:text="盾の勇者"
+                        android:text="@{MainViewModel.title}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/textView" android:textSize="24sp"
                         android:layout_marginTop="8dp"

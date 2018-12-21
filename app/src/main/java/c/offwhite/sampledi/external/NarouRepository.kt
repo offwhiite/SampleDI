@@ -1,6 +1,8 @@
 package com.white.off.hotblood.repository
 
 import c.offwhite.sampledi.domain.ISearchRepository
+import c.offwhite.sampledi.domain.NovelIntroduction
+import c.offwhite.sampledi.external.NovelIntroductionTranslator
 import com.google.gson.GsonBuilder
 import io.reactivex.Single
 import okhttp3.*
@@ -31,9 +33,8 @@ class NarouRepository : ISearchRepository {
     /**
      * 小説情報一覧を取得する
      */
-    fun search(word : String) : List<NarouNovelIntroductionResponse> {
-        // TODO 2: Kotlin-Coroutineを利用して通信処理を行う
-        return searchService.getNovelList(word)
+    override fun search(word : String) : List<NovelIntroduction> {
+        return searchService.getNovelList(word).mapNotNull{response -> NovelIntroductionTranslator().toNovelIntroduction(response)}
     }
 }
 
