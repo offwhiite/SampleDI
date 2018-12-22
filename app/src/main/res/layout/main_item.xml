@@ -1,46 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <variable
-            name="MainViewModel"
-            type="c.offwhite.sampledi.ui.main.MainViewModel" />
+        <variable name="item" type="c.offwhite.sampledi.domain.NovelIntroduction"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.main.MainFragment">
-
-        <android.support.v7.widget.CardView
+    <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="24dp">
 
-            <!--著者名ラベル-->
-            <android.support.constraint.ConstraintLayout
+        <!--著者名ラベル-->
+        <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
+            <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@{MainViewModel.title}"
+                    android:text="@{item.title}"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="盾の勇者" />
+                    tools:text="盾の勇者"/>
 
-                <TextView
+            <TextView
                     android:id="@+id/Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -48,20 +39,20 @@
                     android:layout_marginTop="8dp"
                     android:text="作者："
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
-                <TextView
+            <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="@{MainViewModel.writer}"
+                    android:text="@{item.writer}"
                     app:layout_constraintStart_toEndOf="@+id/Title"
                     app:layout_constraintTop_toBottomOf="@+id/textView"
-                    tools:text="はぴたる" />
+                    tools:text="はぴたる"/>
 
-                <TextView
+            <TextView
                     android:id="@+id/textView3"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -69,14 +60,13 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="@{MainViewModel.story}"
+                    android:text="@{item.story}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/Title"
-                    tools:text="@string/arasuzi" />
-            </android.support.constraint.ConstraintLayout>
-        </android.support.v7.widget.CardView>
+                    tools:text="@string/arasuzi"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-    </android.support.constraint.ConstraintLayout>
 </layout>

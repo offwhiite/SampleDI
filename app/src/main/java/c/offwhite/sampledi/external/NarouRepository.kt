@@ -36,7 +36,7 @@ class NarouRepository : ISearchRepository {
         }
 
         // 空配列を返す
-        return arrayListOf()
+        return emptyList()
     }
 }
 
