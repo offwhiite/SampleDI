@@ -8,7 +8,8 @@ class NovelIntroductionTranslator {
 
     fun toNovelIntroduction(response : NarouNovelIntroductionResponse) : NovelIntroduction? {
 
-        if (response.allcount == null) {
+        // allcountが含まれている場合はその時点で終了
+        if (response.allcount != null) {
             return null
         }
 

@@ -9,7 +9,6 @@ import com.white.off.hotblood.repository.NarouRepository
 class WebSite(val domain : String, val searchRepository : ISearchRepository) {
 
     fun search(word : String) : List<NovelIntroduction>{
-        // TODO 1: LiveDataを返却するように修正する
        return searchRepository.search(word)
     }
 }
