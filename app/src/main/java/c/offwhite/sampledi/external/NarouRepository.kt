@@ -4,15 +4,8 @@ import c.offwhite.sampledi.domain.ISearchRepository
 import c.offwhite.sampledi.domain.NovelIntroduction
 import c.offwhite.sampledi.external.NovelIntroductionTranslator
 import com.google.gson.GsonBuilder
-import io.reactivex.Single
-import okhttp3.*
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.net.InetSocketAddress
-import java.net.Proxy
 
 /**
  * 小説家になろうオープンAPI
@@ -32,9 +25,18 @@ class NarouRepository : ISearchRepository {
 
     /**
      * 小説情報一覧を取得する
+     * - 取得に失敗した場合はサイズ0の配列を返す。
      */
-    override fun search(word : String) : List<NovelIntroduction> {
-        return searchService.getNovelList(word).mapNotNull{response -> NovelIntroductionTranslator().toNovelIntroduction(response)}
+    override fun search(word: String): List<NovelIntroduction> {
+        val response = searchService.getNovelList(word).execute()
+
+        if (response.isSuccessful) {
+            val body = response.body()
+            if (body!= null) return body.mapNotNull { r -> NovelIntroductionTranslator().toNovelIntroduction(r) }
+        }
+
+        // 空配列を返す
+        return arrayListOf()
     }
 }
 

@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface INarouAPI {
 
     @GET("?out=json")
-    fun getNovelList(@Query("word") word : String) : List<NarouNovelIntroductionResponse>
+    fun getNovelList(@Query("word") word : String) : Call<List<NarouNovelIntroductionResponse>>
 }
