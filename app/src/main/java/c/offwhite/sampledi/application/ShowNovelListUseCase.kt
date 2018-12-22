@@ -9,7 +9,7 @@ import com.white.off.hotblood.repository.NarouRepository
  */
 class ShowNovelListUseCase {
 
-    suspend fun getNovelList(word : String):List<NovelIntroduction> {
+    fun getNovelList(word: String): List<NovelIntroduction> {
         val webSite = WebSite("https://api.syosetu.com/", NarouRepository())
         return webSite.search(word)
     }
