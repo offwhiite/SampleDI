@@ -4,13 +4,13 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import c.offwhite.sampledi.R
 import c.offwhite.sampledi.application.ShowNovelListUseCase
 import c.offwhite.sampledi.databinding.MainFragmentBinding
-import kotlinx.android.synthetic.main.main_activity.*
 
 /**
  * メイン画面
@@ -21,16 +21,15 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
+    // ViewModel
     private lateinit var viewModel: MainViewModel
 
-    private lateinit var binding : MainFragmentBinding
+    // binding
+    private lateinit var binding: MainFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         // レイアウトをinflateする
-        binding = DataBindingUtil.inflate<MainFragmentBinding>(inflater, R.layout.main_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
 
         // LiveDataとxmlをbindする
         binding.setLifecycleOwner(this)
@@ -48,7 +47,14 @@ class MainFragment : Fragment() {
             .get(MainViewModel::class.java)
 
         // 生成したviewModelをbindする
-        binding.mainViewModel = viewModel
+        binding.viewModel = viewModel
+
+        // 横向き
+        val manager = LinearLayoutManager(context)
+        manager.orientation = LinearLayoutManager.HORIZONTAL
+        binding.recyclerView.layoutManager = manager
+        binding.recyclerView.adapter = NovelListAdapter()
+
 
         viewModel.onCreate()
     }

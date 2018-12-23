@@ -1,5 +1,8 @@
+@file:JvmName("NovelListAdapter")
+
 package c.offwhite.sampledi.ui.main
 
+import android.databinding.BindingAdapter
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,10 +15,10 @@ import c.offwhite.sampledi.domain.NovelIntroduction
 /**
  * 小説リスト表示アダプター
  */
-class NovelListAdapter: RecyclerView.Adapter<NovelListAdapter.ViewHolder>() {
+class NovelListAdapter : RecyclerView.Adapter<NovelListAdapter.ViewHolder>() {
 
     // 表示アイテム
-    private var novelList : List<NovelIntroduction> = emptyList()
+    private var novelList: List<NovelIntroduction> = emptyList()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is ItemViewHolder && novelList.size > position) {
@@ -34,7 +37,7 @@ class NovelListAdapter: RecyclerView.Adapter<NovelListAdapter.ViewHolder>() {
     /**
      * データをセットしてアップデートする
      */
-    fun update(novelList : List<NovelIntroduction>) {
+    fun update(novelList: List<NovelIntroduction>) {
         this.novelList = novelList
         notifyDataSetChanged()
     }
@@ -55,4 +58,19 @@ class NovelListAdapter: RecyclerView.Adapter<NovelListAdapter.ViewHolder>() {
         }
     }
 
+    companion object {
+        @JvmStatic
+        @BindingAdapter("items")
+        fun RecyclerView.bindItems(items: List<NovelIntroduction>?) {
+
+            // まだ情報が取得できていない場合はitemsがnullになる可能性があるため、nullチェック必須。
+            if (items == null) {
+                return
+            }
+
+            //  RecyclerView.Adapterを継承しているので、RecyclerViewに設定されているadapterを取得できる
+            val adapter = adapter as NovelListAdapter
+            adapter.update(items)
+        }
+    }
 }
