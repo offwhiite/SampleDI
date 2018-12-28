@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import c.offwhite.sampledi.application.ShowNovelListUseCase
-import c.offwhite.sampledi.domain.NovelIntroduction
+import c.offwhite.novel.domain.NovelIntroduction
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

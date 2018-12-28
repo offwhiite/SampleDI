@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import c.offwhite.sampledi.R
 import c.offwhite.sampledi.databinding.MainItemBinding
-import c.offwhite.sampledi.domain.NovelIntroduction
+import c.offwhite.novel.domain.NovelIntroduction
 
 /**
  * 小説リスト表示アダプター

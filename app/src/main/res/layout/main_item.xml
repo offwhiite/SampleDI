@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="c.offwhite.sampledi.domain.NovelIntroduction" />
+            type="c.offwhite.novel.domain.NovelIntroduction" />
     </data>
 
     <android.support.v7.widget.CardView

@@ -1,1 +1,1 @@
-include ':app', ':viewer', ':domain'
+include ':app', ':novel'
