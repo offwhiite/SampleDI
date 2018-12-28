@@ -2,6 +2,7 @@ package c.offwhite.novel.infra
 
 import c.offwhite.novel.domain.Novel
 import c.offwhite.novel.domain.NovelIntroduction
+import java.io.Serializable
 
 data class NarouNovelIntroductionResponse(var allcount: Int?,
                                           var title: String?,
@@ -34,6 +35,6 @@ data class NarouNovelIntroductionResponse(var allcount: Int?,
                                           var sasie_cnt: Int?,
                                           var kaiwaritu: Int?,
                                           var novelupdated_at: String?,
-                                          var updated_at: String?) {
+                                          var updated_at: String?): Serializable {
 
 }
