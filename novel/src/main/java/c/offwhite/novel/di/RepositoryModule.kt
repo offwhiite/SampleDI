@@ -1,6 +1,7 @@
 package c.offwhite.novel.di
 
 import c.offwhite.novel.domain.ISearchRepository
+import c.offwhite.novel.external.api.INarouOpenApi
 import c.offwhite.novel.infra.NarouRepository
 import dagger.Module
 import dagger.Provides
@@ -9,7 +10,7 @@ import dagger.Provides
 class RepositoryModule {
 
     @Provides
-    fun provideNarouRepository(): ISearchRepository {
-        return NarouRepository(DaggerApiComponent.create().inject())
+    fun provideNarouRepository(narouApi: INarouOpenApi): ISearchRepository {
+        return NarouRepository(narouApi)
     }
 }
