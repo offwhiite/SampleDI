@@ -6,8 +6,9 @@ import com.google.gson.GsonBuilder
 import c.offwhite.novel.infra.INarouAPI
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-class NarouOpenApi {
+class NarouOpenApi @Inject constructor() : INarouOpenApi {
 
     // Contextをどこまで引っ張ってくるか問題。個人的に環境やUIに左右されない固定値はresourceに定義するべきではないと思う。
     // 検証環境等環境別にURLがあるならresource定義でもよいかも
@@ -24,7 +25,7 @@ class NarouOpenApi {
      * 小説情報一覧を取得する
      * - 取得に失敗した場合はサイズ0の配列を返す。
      */
-    fun search(word: String): List<NovelIntroduction> {
+    override fun search(word: String): List<NovelIntroduction> {
         val response = searchService.getNovelList(word).execute()
 
         if (response.isSuccessful) {

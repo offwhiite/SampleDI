@@ -2,12 +2,13 @@ package c.offwhite.novel.infra
 
 import c.offwhite.novel.domain.ISearchRepository
 import c.offwhite.novel.domain.NovelIntroduction
-import c.offwhite.novel.external.api.NarouOpenApi
+import c.offwhite.novel.external.api.INarouOpenApi
+import javax.inject.Inject
 
 /**
  * 小説家になろうオープンAPI
  */
-class NarouRepository(val api: NarouOpenApi) : ISearchRepository {
+class NarouRepository @Inject constructor(val api: INarouOpenApi) : ISearchRepository {
 
     /**
      * 小説情報一覧を取得する
@@ -16,6 +17,7 @@ class NarouRepository(val api: NarouOpenApi) : ISearchRepository {
     override fun search(word: String): List<NovelIntroduction> {
         return api.search(word)
     }
+
 }
 
 

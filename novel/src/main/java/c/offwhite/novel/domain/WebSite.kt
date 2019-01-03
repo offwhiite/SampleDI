@@ -1,12 +1,17 @@
 package c.offwhite.novel.domain
 
+import c.offwhite.novel.di.DaggerRepositoryComponent
+import javax.inject.Inject
+
 /**
  * WebSiteクラス
- * TODO 3: Dagger2を利用してDIする
  */
-class WebSite(val domain : String, val searchRepository : ISearchRepository) {
+class WebSite (val domain: String) {
 
-    fun search(word : String) : List<NovelIntroduction>{
-       return searchRepository.search(word)
+    @Inject lateinit var searchRepository: ISearchRepository
+
+    fun search(word: String): List<NovelIntroduction> {
+        searchRepository = DaggerRepositoryComponent.create().inject()
+        return searchRepository.search(word)
     }
 }
