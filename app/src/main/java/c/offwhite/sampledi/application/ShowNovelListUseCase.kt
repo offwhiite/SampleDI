@@ -1,7 +1,7 @@
 package c.offwhite.sampledi.application
 
+import c.offwhite.novel.di.DaggerDomainComponent
 import c.offwhite.novel.domain.NovelIntroduction
-import c.offwhite.novel.domain.WebSite
 
 /**
  * 小説のリストを取得する
@@ -9,7 +9,11 @@ import c.offwhite.novel.domain.WebSite
 class ShowNovelListUseCase {
 
     fun getNovelList(word: String): List<NovelIntroduction> {
-        val webSite = WebSite("https://api.syosetu.com/")
+        val webSite = DaggerDomainComponent.builder()
+            .domain("https://api.syosetu.com/") // 生成時にドメインを指定する
+            .build() // DomainComponentを生成する
+            .inject() // inject実施。repositoryを注入する。
+
         return webSite.search(word)
     }
 
