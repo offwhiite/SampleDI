@@ -9,4 +9,7 @@ interface INarouNovelAPI {
 
     @GET("{ncode}/{page}")
     fun getNovel(@Path("ncode") ncode : String, @Path("page") page : String) : Call<ResponseBody>
+
+    @GET("{ncode}")
+    fun getNovelIndex(@Path("ncode") ncode : String) : Call<ResponseBody>
 }
