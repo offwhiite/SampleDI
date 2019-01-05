@@ -2,6 +2,8 @@ package c.offwhite.novel.di
 
 import c.offwhite.novel.external.api.INarouOpenApi
 import c.offwhite.novel.external.api.NarouOpenApi
+import c.offwhite.novel.infra.api.INarouPageApi
+import c.offwhite.novel.infra.api.NarouPageApi
 import dagger.Module
 import dagger.Provides
 
@@ -10,5 +12,10 @@ class ApiModule {
     @Provides
     fun provideNarouApi(narouOpenApi: NarouOpenApi): INarouOpenApi {
         return narouOpenApi
+    }
+
+    @Provides
+    fun provideNarouPageApi(narouPageApi: NarouPageApi): INarouPageApi {
+        return narouPageApi
     }
 }
