@@ -2,27 +2,28 @@
 
 package c.offwhite.sampledi.ui.main
 
+import android.content.Context
 import android.databinding.BindingAdapter
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import c.offwhite.novel.domain.NovelIntroduction
 import c.offwhite.sampledi.R
 import c.offwhite.sampledi.databinding.MainItemBinding
-import c.offwhite.novel.domain.NovelIntroduction
 
 /**
  * 小説リスト表示アダプター
  */
-class NovelListAdapter : RecyclerView.Adapter<NovelListAdapter.ViewHolder>() {
+class NovelListAdapter(private val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<NovelListAdapter.ViewHolder>() {
 
     // 表示アイテム
     private var novelList: List<NovelIntroduction> = emptyList()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is ItemViewHolder && novelList.size > position) {
-            holder.bind(novelList[position])
+            holder.bind(holder.itemView, novelList[position], onItemClickListener)
         }
     }
 
@@ -44,17 +45,18 @@ class NovelListAdapter : RecyclerView.Adapter<NovelListAdapter.ViewHolder>() {
 
     abstract class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
     class ItemViewHolder(
-        private val parent: ViewGroup,
-        private val binding: MainItemBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            R.layout.main_item,
-            parent,
-            false
-        )
+            private val parent: ViewGroup,
+            private val binding: MainItemBinding = DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.main_item,
+                    parent,
+                    false
+            )
     ) : ViewHolder(binding.root) {
 
-        fun bind(item: NovelIntroduction) {
+        fun bind(view: View, item: NovelIntroduction, onItemClickListener: OnItemClickListener) {
             binding.item = item
+            view.setOnClickListener { onItemClickListener.onItemClick(view.context, item.ncode) }
         }
     }
 
@@ -72,5 +74,10 @@ class NovelListAdapter : RecyclerView.Adapter<NovelListAdapter.ViewHolder>() {
             val adapter = adapter as NovelListAdapter
             adapter.update(items)
         }
+    }
+
+
+    interface OnItemClickListener {
+        fun onItemClick(context: Context, ncode: String)
     }
 }

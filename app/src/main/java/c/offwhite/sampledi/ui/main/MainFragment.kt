@@ -53,7 +53,9 @@ class MainFragment : Fragment() {
         val manager = LinearLayoutManager(context)
         manager.orientation = LinearLayoutManager.HORIZONTAL
         binding.recyclerView.layoutManager = manager
-        binding.recyclerView.adapter = NovelListAdapter()
+
+        // adapter設定
+        binding.recyclerView.adapter = NovelListAdapter(viewModel.onItemTapListener)
 
 
         viewModel.onCreate()
