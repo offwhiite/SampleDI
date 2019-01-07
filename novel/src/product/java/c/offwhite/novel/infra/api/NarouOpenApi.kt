@@ -1,9 +1,10 @@
 package c.offwhite.novel.external.api
 
 import c.offwhite.novel.domain.NovelIntroduction
-import c.offwhite.novel.infra.NovelIntroductionTranslator
-import com.google.gson.GsonBuilder
 import c.offwhite.novel.infra.INarouAPI
+import c.offwhite.novel.infra.NovelIntroductionTranslator
+import c.offwhite.novel.infra.api.INarouOpenApi
+import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
@@ -30,7 +31,7 @@ class NarouOpenApi @Inject constructor() : INarouOpenApi {
 
         if (response.isSuccessful) {
             val body = response.body()
-            if (body!= null) return body.mapNotNull { r -> NovelIntroductionTranslator().toNovelIntroduction(r) }
+            if (body != null) return body.mapNotNull { r -> NovelIntroductionTranslator().toNovelIntroduction(r) }
         }
 
         // 空配列を返す

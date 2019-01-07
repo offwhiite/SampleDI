@@ -43,7 +43,7 @@ class MainFragment : Fragment() {
 
         // viewModel作成
         viewModel = ViewModelProviders
-            .of(this, MainViewModel.Factory(ShowNovelListUseCase()))
+            .of(this, MainViewModel.Factory(MainRouter(context!!), ShowNovelListUseCase()))
             .get(MainViewModel::class.java)
 
         // 生成したviewModelをbindする
