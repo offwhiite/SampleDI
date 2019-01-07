@@ -2,8 +2,7 @@ package c.offwhite.novel.di
 
 import c.offwhite.novel.domain.IGetPageRepository
 import c.offwhite.novel.domain.ISearchRepository
-import c.offwhite.novel.external.api.INarouOpenApi
-import c.offwhite.novel.external.api.NarouOpenApi
+import c.offwhite.novel.infra.api.INarouOpenApi
 import c.offwhite.novel.infra.NarouHtmlRepository
 import c.offwhite.novel.infra.NarouRepository
 import c.offwhite.novel.infra.api.INarouPageApi

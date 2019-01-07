@@ -8,8 +8,9 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
+import javax.inject.Inject
 
-class NarouPageApi : INarouPageApi {
+class NarouPageApi @Inject constructor(): INarouPageApi {
 
     // 小説を読もうURL
     private val BASE_URL = "https://ncode.syosetu.com/"

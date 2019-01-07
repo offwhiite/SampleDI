@@ -1,4 +1,4 @@
-package c.offwhite.novel.external.api
+package c.offwhite.novel.infra.api
 
 import c.offwhite.novel.domain.NovelIntroduction
 

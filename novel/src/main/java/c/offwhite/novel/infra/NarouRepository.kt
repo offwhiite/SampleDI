@@ -2,7 +2,7 @@ package c.offwhite.novel.infra
 
 import c.offwhite.novel.domain.ISearchRepository
 import c.offwhite.novel.domain.NovelIntroduction
-import c.offwhite.novel.external.api.INarouOpenApi
+import c.offwhite.novel.infra.api.INarouOpenApi
 import javax.inject.Inject
 
 /**
