@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.content.ContextCompat.startActivity
 import android.view.View
+import c.off.white.viewer.ScrollingActivity
 import c.offwhite.novel.domain.NovelIntroduction
 import c.offwhite.sampledi.application.ShowNovelListUseCase
 import kotlinx.coroutines.GlobalScope
@@ -38,7 +39,7 @@ class MainViewModel constructor(private val showNovelListUseCase: ShowNovelListU
     }
 
     fun onClick(context: Context, ncode: String) {
-        val intent = Intent("c.off.white.viewer.ScrollingActivity")
+        val intent = Intent(context, ScrollingActivity::class.java)
         intent.putExtra(NCODE, ncode)
         startActivity(context, intent, null)
     }

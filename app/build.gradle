@@ -74,4 +74,5 @@ dependencies {
 
     // マルチモジュール(Components)
     implementation project(path:':novel')
+    implementation project(path:':viewer')
 }
